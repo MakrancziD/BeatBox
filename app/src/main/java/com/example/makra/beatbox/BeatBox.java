@@ -25,6 +25,8 @@ public class BeatBox {
     private List<Sound> mSounds = new ArrayList<>();
     private SoundPool mSoundPool;
 
+    private float mRate;
+
     public BeatBox(Context context) {
         mAssets = context.getAssets();
         mSoundPool = new SoundPool(MAX_SOUNDS, AudioManager.STREAM_MUSIC, 0);
@@ -36,7 +38,7 @@ public class BeatBox {
         if(sound == null) {
             return;
         }
-        mSoundPool.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f);
+        mSoundPool.play(soundId, 1.0f, 1.0f, 1, 0, mRate);
     }
 
     public void release() {
@@ -74,5 +76,9 @@ public class BeatBox {
 
     public List<Sound> getSounds() {
         return mSounds;
+    }
+
+    public void setRate(float mRate) {
+        this.mRate = mRate;
     }
 }
